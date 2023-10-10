@@ -10,8 +10,6 @@ public class TestSimularViaje {
 
 	public void SimularViaje() {
 
-		Vehículo vehículo1 = crearVehículo();
-		Persona persona1 = crearPersona();
 		double distancia = 0;
 
 		Scanner leer = new Scanner(System.in);
@@ -19,44 +17,40 @@ public class TestSimularViaje {
 		do {
 
 			try{
-				System.out.println("Ingrese la distancia en kilometros, a la cual se encuentra su destino ");
+				System.out.print("Ingrese la distancia en kilometros, a la cual se encuentra su destino: ");
 				String input = leer.next();
 				distancia = Double.parseDouble(input);
-
-			} catch (NumberFormatException e) {
-				System.out.println("Error: Valor invalido.");
-			}
+			} catch (NumberFormatException e) { System.out.println("Error: Valor invalido."); }
 
 		}while (!isMayorCero(distancia) );
 
-		System.out.println("Hola " + persona1.getNombre() + "!, el tiempo de viaje aproximado para llegar a " + distancia+ "kilometros en " + vehículo1.getTipo() + " a " + vehículo1.getVelocidad() + " es de: " + vehículo1.tiempoLlegada(distancia));
+		Vehículo vehículo1 = crearVehículo();
+		Persona persona1 = crearPersona();
+
+		imprimirMensaje(persona1, distancia,vehículo1);
+
 	}
 
 	public Vehículo crearVehículo(){
 
 		Scanner leer = new Scanner(System.in);
 
-		String tipo;
-		int velocidad;
+		String tipo = "";
+		int velocidad = 0;
 
-		System.out.println("Seleccione su vehiculo:\n[1] Auto\n[2] Motocicleta\n[3] Bicicleta\nSeleccion: ");
-		int seleccion = leer.nextInt();
+		do {
 
-		switch (seleccion) {
-			case 1 -> {
-				tipo = "Auto";
-				velocidad = 50 ;
+			System.out.print("\nSeleccione su vehiculo:\n[1] Auto\n[2] Motocicleta\n[3] Bicicleta\nSeleccion: ");
+			String seleccion = leer.next();
+
+			switch (seleccion) {
+				case "1" -> { tipo = "Auto"; velocidad = 50 ; }
+				case "2" -> { tipo = "Motocicleta"; velocidad = 30; }
+				case "3"-> { tipo = "Bicicleta"; velocidad = 10; }
+				default -> System.out.println("Ingrese un valor valido\n");
 			}
-			case 2 -> {
-				tipo = "Motocicleta";
-				velocidad = 30;
-			}
-			case 3 -> {
-				tipo = "Bcicleta";
-				velocidad = 10;
-			}
-			default -> throw new IllegalStateException("Unexpected value: " + seleccion);
-		}
+
+		} while (!isMayorCero(velocidad));
 
 		return new Vehículo(tipo, velocidad);
 
@@ -66,7 +60,7 @@ public class TestSimularViaje {
 
 		Scanner leer = new Scanner(System.in);
 
-		System.out.println("Ingrese el nombre de la persona: ");
+		System.out.print("\nIngrese el nombre de la persona: ");
 		String nombre = leer.next();
 
 		return new Persona(nombre);
@@ -77,6 +71,14 @@ public class TestSimularViaje {
 		return num1 > 0;
 	}
 
-
+	public void imprimirMensaje(Persona valorPersona, double valorDistancia, Vehículo valorVehiculo){
+		String nombre = valorPersona.getNombre();
+		String tipoVehiculo = valorVehiculo.getTipo();
+		double velocidadVehiculo = valorVehiculo.getVelocidad();
+		double tiempoLlegada = valorVehiculo.tiempoLlegada(valorDistancia);
+		System.out.println("\nHola " + nombre + "!, el tiempo de viaje aproximado para llegar a " +
+				valorDistancia+ " [km] de distancia en " + tipoVehiculo + " a " + velocidadVehiculo +
+				" [km/h] es de: " + tiempoLlegada + " horas.");
+	}
 
 }
