@@ -14,6 +14,9 @@
 ### Diagrama de Clases:
 ![img.png](img.png)
 
+___
+
+
 ## Segunda Iteracion: 
 
 ### Clases:
