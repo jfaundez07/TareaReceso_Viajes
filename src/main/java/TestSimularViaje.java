@@ -40,13 +40,13 @@ public class TestSimularViaje {
 
 		do {
 
-			System.out.print("\nSeleccione su vehiculo:\n[1] Auto\n[2] Motocicleta\n[3] Bicicleta\nSeleccion: ");
+			System.out.print("\nSeleccione su vehiculo:\n[1] Auto. Veclocidad: 50 [km/h]\n[2] Motocicleta. Velocidad [40km/h]\n[3] Bicicleta. Velocidad: 20 [km/h]\nSeleccion: ");
 			String seleccion = leer.next();
 
 			switch (seleccion) {
 				case "1" -> { tipo = "Auto"; velocidad = 50 ; }
-				case "2" -> { tipo = "Motocicleta"; velocidad = 30; }
-				case "3"-> { tipo = "Bicicleta"; velocidad = 10; }
+				case "2" -> { tipo = "Motocicleta"; velocidad = 40; }
+				case "3"-> { tipo = "Bicicleta"; velocidad = 20; }
 				default -> System.out.println("Ingrese un valor valido\n");
 			}
 
@@ -60,7 +60,7 @@ public class TestSimularViaje {
 
 		Scanner leer = new Scanner(System.in);
 
-		System.out.print("\nIngrese el nombre de la persona: ");
+		System.out.print("\nIngrese su nombre: ");
 		String nombre = leer.next();
 
 		return new Persona(nombre);
