@@ -13,3 +13,16 @@
 
 ### Diagrama de Clases:
 ![img.png](img.png)
+
+## Segunda Iteracion: 
+
+### Clases:
+
+| Clase         |                                                  Descripcion                                                  |                                                                                                       Atributos                                                                                                        |                                                                                                                                           Metodos                                                                                                                                            |
+|---------------|:-------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| Persona       |                      Requerida para poder simular al usuario que utilizara el vehiculo.                       |                                                                            Nombre, de tipo String, necesario para identificar a la persona.                                                                            |                                                                  "Constructor" con el parametro "Nombre". <br/>"getNombre" para poder imprimirlo por pantalla. <br/>"setNombre" para modificarlo en caso de ser necesario.                                                                   |
+| Vehículo      |           Requrida para simular los vehículos que puede utilizar la persona para realizar el viaje.           | Tipo, de tipo String, neceseario para determinar si es un auto, una motocicleta o una bicicleta<br/>Velocidad, de tipo entero, necesaria para determinar cuanto tardara el vehiculo en recorrer la distancia indicada. |                                            "Constructor" con los parametros "tipo" y "velocidad".<br/>"Tiempo de llegada", que toma como parametro la disntancia recorrida, y retorna el tiempo requerido.<br/> Sus respectivos getter y setter.                                             |
+| Simular Viaje | Requerida para llamar a las clases Persona y Vehículo y simular el viaje solicitando las entradas al usuario, |                                                                                                      No requiere.                                                                                                      | "main", para ejecutar el programa.<br/>"Simular Viaje", que intancia los objetos y simula el viaje.<br/>"crearVehiculo" y "crearPersona" requeridos para instanciar los objetos de tipo Persona y de tipo Vehiculo.<br/>"imprimirMensaje", necesario para mostrar la informacion solicitada. |
+
+### Diagrama de Clases:
+![img.png](img.png)
