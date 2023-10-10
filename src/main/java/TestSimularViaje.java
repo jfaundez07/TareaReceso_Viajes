@@ -72,13 +72,14 @@ public class TestSimularViaje {
 	}
 
 	public void imprimirMensaje(Persona valorPersona, double valorDistancia, Vehículo valorVehiculo){
+
 		String nombre = valorPersona.getNombre();
 		String tipoVehiculo = valorVehiculo.getTipo();
 		double velocidadVehiculo = valorVehiculo.getVelocidad();
 		double tiempoLlegada = valorVehiculo.tiempoLlegada(valorDistancia);
-		System.out.println("\nHola " + nombre + "!, el tiempo de viaje aproximado para llegar a " +
-				valorDistancia+ " [km] de distancia en " + tipoVehiculo + " a " + velocidadVehiculo +
-				" [km/h] es de: " + tiempoLlegada + " horas.");
+
+		System.out.println("\nHola " + nombre + "!, el tiempo de viaje aproximado para llegar a " + valorDistancia +
+				" [km] de distancia en " + tipoVehiculo + " a " + velocidadVehiculo + " [km/h] es de: " + tiempoLlegada + " horas.");
 	}
 
 }
