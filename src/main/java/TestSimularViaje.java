@@ -47,7 +47,7 @@ public class TestSimularViaje {
 				case "1" -> { tipo = "Auto"; velocidad = 50 ; }
 				case "2" -> { tipo = "Motocicleta"; velocidad = 40; }
 				case "3"-> { tipo = "Bicicleta"; velocidad = 20; }
-				default -> System.out.println("Ingrese un valor valido\n");
+				default -> System.out.println("Valor invalido.Intente nuevamente\n");
 			}
 
 		} while (!isMayorCero(velocidad));
