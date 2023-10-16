@@ -2,38 +2,34 @@ import java.util.Scanner;
 
 public class TestSimularViaje {
 
-	public static void main(String[] args){
-		TestSimularViaje viaje = new TestSimularViaje();
-		viaje.SimularViaje();
-
-	}
+	private Vehículo vehículo1;
+	private Persona persona1;
 
 	public void SimularViaje() {
 
+		String destino = "";
 		double distancia = 0;
-
-		Scanner leer = new Scanner(System.in);
 
 		do {
 
 			try{
+				System.out.print("Ingrese el nombre de su destino: ");
+				destino = leerString();
 				System.out.print("Ingrese la distancia en kilometros, a la cual se encuentra su destino: ");
-				String input = leer.next();
+				String input = leerString();
 				distancia = Double.parseDouble(input);
 			} catch (NumberFormatException e) { System.out.println("Error: Valor invalido."); }
 
 		}while (!isMayorCero(distancia) );
 
-		Vehículo vehículo1 = crearVehículo();
-		Persona persona1 = crearPersona();
+		vehículo1 = crearVehículo();
+		persona1 = crearPersona();
 
-		imprimirMensaje(persona1, distancia,vehículo1);
+		imprimirMensaje(persona1, distancia,vehículo1, destino);
 
 	}
 
-	public Vehículo crearVehículo(){
-
-		Scanner leer = new Scanner(System.in);
+	private Vehículo crearVehículo(){
 
 		String tipo = "";
 		int velocidad = 0;
@@ -41,7 +37,7 @@ public class TestSimularViaje {
 		do {
 
 			System.out.print("\nSeleccione su vehiculo:\n[1] Auto. Veclocidad: 50 [km/h]\n[2] Motocicleta. Velocidad [40km/h]\n[3] Bicicleta. Velocidad: 20 [km/h]\nSeleccion: ");
-			String seleccion = leer.next();
+			String seleccion = leerString();
 
 			switch (seleccion) {
 				case "1" -> { tipo = "Auto"; velocidad = 50 ; }
@@ -56,30 +52,36 @@ public class TestSimularViaje {
 
 	}
 
-	public Persona crearPersona(){
-
-		Scanner leer = new Scanner(System.in);
+	private Persona crearPersona(){
 
 		System.out.print("\nIngrese su nombre: ");
-		String nombre = leer.next();
+		String nombre = leerString();
 
 		return new Persona(nombre);
 
 	}
 
-	public boolean isMayorCero(double num1) {
+	private boolean isMayorCero(double num1) {
 		return num1 > 0;
 	}
 
-	public void imprimirMensaje(Persona valorPersona, double valorDistancia, Vehículo valorVehiculo){
+	private void imprimirMensaje(Persona valorPersona, double valorDistancia, Vehículo valorVehiculo, String destino){
 
 		String nombre = valorPersona.getNombre();
 		String tipoVehiculo = valorVehiculo.getTipo();
 		double velocidadVehiculo = valorVehiculo.getVelocidad();
 		double tiempoLlegada = valorVehiculo.tiempoLlegada(valorDistancia);
 
-		System.out.println("\nHola " + nombre + "!, el tiempo de viaje aproximado para llegar a " + valorDistancia +
-				" [km] de distancia en " + tipoVehiculo + " a " + velocidadVehiculo + " [km/h] es de: " + tiempoLlegada + " horas.");
+		System.out.println("\nHola " + nombre + "!, el tiempo de viaje aproximado para llegar a: " + destino +
+				"que se encuentra a " + valorDistancia + " [km] de distancia en " + tipoVehiculo + " a " + velocidadVehiculo +
+				" [km/h] es de: " + tiempoLlegada + " horas.");
 	}
+
+	private String leerString() {
+		Scanner leer = new Scanner(System.in);
+		return leer.next();
+	}
+
+
 
 }
