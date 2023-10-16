@@ -61,7 +61,7 @@ public class TestSimularViaje {
 
 	}
 
-	private boolean isMayorCero(double num1) {
+	public boolean isMayorCero(double num1) {
 		return num1 > 0;
 	}
 
