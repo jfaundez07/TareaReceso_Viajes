@@ -27,12 +27,16 @@ class TestSimularViajeTest {
     @Test
     void crearVehículo() {
         assertEquals(obejetoVehiculo.getClass(), Vehículo.class);
+        assertEquals(1.0, obejetoVehiculo.tiempoLlegada(50));
+        assertEquals("Auto", obejetoVehiculo.getTipo());
+        assertEquals(50, obejetoVehiculo.getVelocidad());
 
     }
 
     @Test
     void crearPersona() {
         assertEquals(objetoPersona.getClass(), Persona.class);
+        assertEquals("Joaquin", objetoPersona.getNombre());
     }
 
     @Test
